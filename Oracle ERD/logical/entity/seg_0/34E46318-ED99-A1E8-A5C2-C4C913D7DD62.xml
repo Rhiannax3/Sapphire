@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="34E46318-ED99-A1E8-A5C2-C4C913D7DD62" name="CustomerOrder">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>9AEE369D-98B4-4847-FBA7-B28E9F846157</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="orderID" id="F0FBAD3D-BCC1-A949-8818-22CCED514577">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>D8A18571-28C2-60C7-F48B-A3EF8C87B56C</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="timePlaced" id="E865A58F-8C33-B21F-77A6-26AD9D1CBD13">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>4588655F-850E-2DCB-8AE6-47CF0C1F4A55</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="customerID" id="7D9CF743-B106-107B-E5DF-0E30D15829DA">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:50:45 UTC</createdTime>
+<generatorID>72E2BADD-CBA7-7CEB-16EF-3DB92D682A36</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<referedAttribute>47F9B040-ED81-1FB4-A0E1-794158275BE3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Customer customerID" id="62721899-B030-407D-B166-CBB7E403CD56">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:12:27 UTC</createdTime>
+<generatorID>977383A5-2ADE-9DCB-E8AD-EED285D23A23</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<referedAttribute>47F9B040-ED81-1FB4-A0E1-794158275BE3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="815F7668-AF84-D90F-E7DE-E6B7D5E1F988" name="CustomerOrder PK">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:57:01 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>F0FBAD3D-BCC1-A949-8818-22CCED514577</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="3280A6D0-B965-E84F-081A-449016A7999B" name="CustomerOrder PKv1">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:12:27 UTC</createdTime>
+<generatorID>75931B60-5B62-9D67-F9AC-003F9B83064B</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F0FBAD3D-BCC1-A949-8818-22CCED514577</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

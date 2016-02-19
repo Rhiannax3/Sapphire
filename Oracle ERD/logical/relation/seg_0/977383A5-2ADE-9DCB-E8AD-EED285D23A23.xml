@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CustomerOrder_Customer_FK" directorySegmentName="seg_0" id="977383A5-2ADE-9DCB-E8AD-EED285D23A23">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:12:27 UTC</createdTime>
+<generatorID>78299D8C-A658-E8ED-D604-4B4BC00C70E2</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<sourcePk>34ABE10F-5B3F-67CA-47DD-0AC79DF592A2</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>9A782305-BF54-ED5D-E642-114E35210D3F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>34E46318-ED99-A1E8-A5C2-C4C913D7DD62</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

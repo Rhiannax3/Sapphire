@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0E19CB45-FE57-A5C1-5210-A27F06307C3D" name="BillingAddress">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:14:43 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="billingHouse" id="3D8C0BEB-0C0D-01C3-FABA-D044767F2B0A">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:20:44 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<sourceType>Manual</sourceType>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="billingStreet" id="3D206252-5023-D1AC-CD63-72A7594A7FF8">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:20:44 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="billingCity" id="B6654A4E-1462-0B8B-52E0-7D7BC882210B">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:20:44 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="billingCounty" id="38291FCE-72D3-BB76-B494-7486DBD5F9AF">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:20:44 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="billingPostcode" id="C6D58A8B-5B1D-25CE-5878-4E44DFA45830">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:20:44 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="billingCountry" id="BE945251-1FE5-FCD2-C1FF-74C84400E9A9">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:20:44 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Customer_customerID" id="E433ADF6-7882-25D7-5E33-ECFC276B5FD7">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:08:28 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="561279B3-FCD1-FBE5-3AD5-B2CC4BF9BB8C" referredColumn="D5BA09A7-7251-77B6-ABF0-E045787B8862"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="17400643-3C21-450E-A8E5-0C0A8370D738" name="Address_Customer_FK">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:08:28 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E433ADF6-7882-25D7-5E33-ECFC276B5FD7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

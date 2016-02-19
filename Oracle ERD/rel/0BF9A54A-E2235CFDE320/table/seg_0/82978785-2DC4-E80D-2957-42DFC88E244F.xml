@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="82978785-2DC4-E80D-2957-42DFC88E244F" name="CardInfo">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:34:04 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cardNumber" id="E2E27AEE-C45E-E09E-8764-B9DCFE364902">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:37:51 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expiryDate" id="9D04176B-0E45-CD01-69CB-ADA971D2C1E1">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:37:51 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="securityCode" id="046A8337-51D7-42B7-A092-BB47E8123E9A">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:37:51 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Customer_customerID" id="F4553A0C-67ED-157B-6F88-21D581DD6778">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:08:50 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="10583045-21C8-DF5D-0E56-631E2A34CC80" referredColumn="D5BA09A7-7251-77B6-ABF0-E045787B8862"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EC91C840-9DF5-A36F-463C-C7031F07FF92" name="CardInfo_Customer_FK">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:08:50 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F4553A0C-67ED-157B-6F88-21D581DD6778"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

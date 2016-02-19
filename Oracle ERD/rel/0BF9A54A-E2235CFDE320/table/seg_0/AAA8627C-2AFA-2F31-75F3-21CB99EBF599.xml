@@ -1,0 +1,68 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AAA8627C-2AFA-2F31-75F3-21CB99EBF599" name="Product">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:48:44 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="productID" id="D831D508-0DF6-8436-0298-5B8A4B7B039C">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:36 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="productName" id="BABF53B1-B25E-332D-6312-EC14114B35FB">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:36 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="productStockTotal" id="1092EA4B-DFC9-54F5-7D93-068E5F0D3231">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:36 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="productStockAvailable" id="A50EC5CF-4E07-E65A-E118-5E77BDFCE669">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-19 14:40:38 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="productStockThreshold" id="89BEAB9E-1062-9584-B388-0578E3EE1826">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-19 14:40:38 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+</Table>

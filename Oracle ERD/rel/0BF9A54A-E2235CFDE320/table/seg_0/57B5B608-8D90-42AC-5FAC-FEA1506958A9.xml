@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="57B5B608-8D90-42AC-5FAC-FEA1506958A9" name="Customer">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:22:05 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="customerID" id="D5BA09A7-7251-77B6-ABF0-E045787B8862">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:23 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customerName" id="9E16D2DA-1B09-CE67-3FB5-75D68BEC79BF">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:23 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customerDateOfBirth" id="64C66A02-D450-987C-F584-F4323D9E184C">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:23 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customerStatus" id="95637015-7782-B959-2ACB-3765BAB8F799">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:23 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customerEmail" id="17453BDD-D148-16CA-DC67-F7EF518A2CEB">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-19 14:24:08 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customerPhone" id="7F89D4D0-FE60-1983-FA7E-C83FE2140E1F">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-19 14:24:08 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="12E3FC3A-C26E-F63E-C257-46FEC297DF1D" name="Customer_PK">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:23 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D5BA09A7-7251-77B6-ABF0-E045787B8862"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

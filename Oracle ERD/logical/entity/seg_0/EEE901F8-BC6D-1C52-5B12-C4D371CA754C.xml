@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EEE901F8-BC6D-1C52-5B12-C4D371CA754C" name="Product">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>AAA8627C-2AFA-2F31-75F3-21CB99EBF599</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="productID" id="1D1603F0-E442-E27A-C089-45B2E09BCED9">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>D831D508-0DF6-8436-0298-5B8A4B7B039C</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="productName" id="BDAED0F0-AEC0-BC1E-9374-2F93841173DF">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>BABF53B1-B25E-332D-6312-EC14114B35FB</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="stockLevel" id="9B6F4CCD-A40C-D92C-2EAC-2A6D3B5FE35D">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>1092EA4B-DFC9-54F5-7D93-068E5F0D3231</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

@@ -1,0 +1,67 @@
+$$$ Customer
+
+db.Customer.insert({customerID: , customerName: "", customerDateOfBirth: , customerEmail: "", customerPhone: , customerStatus: ""})
+db.Customer.insert({customerID: , customerName: "", customerDateOfBirth: , customerEmail: "", customerPhone: , customerStatus: ""})
+
+$$$ Product
+
+db.Product.insert({productID: , productName: "", productPrice: , stockTotal: , stockAvailable: stockThreshold: })
+db.Product.insert({productID: , productName: "", productPrice: , stockTotal: , stockAvailable: stockThreshold: })
+db.Product.insert({productID: , productName: "", productPrice: , stockTotal: , stockAvailable: stockThreshold: })
+db.Product.insert({productID: , productName: "", productPrice: , stockTotal: , stockAvailable: stockThreshold: })
+
+$$$ Delivery Address
+
+db.DeliveryAddress.insert({deliveryID: , deliveryHouse: "", deliveryStreet: "", deliveryCity: "", deliveryCounty: "", deliveryPostcode: , deliveryZoneID: })
+
+$$ Global Distribution
+
+db.GlobalDistribution.insert({zoneID: , zoneLocation: "", zoneCapacity: , zoneLevel: , zoneThreshold: })
+
+$$$ Billing Address
+
+db.BillingAddress.insert({billingID: , billingHouse: "", billingStreet: "", billingCity: "", billingCounty: "", billingPostcode: })
+
+$$$ Card Info
+
+db.CardInfo.insert({cardID: , cardNumber: , cardExpiry: , cardSecurity: , cardBillingID: })
+
+$$$ Customer Order
+
+db.CustomerOrder.insert({orderID: , orderTimePlaced: })
+
+$$$ Customer Order Line
+
+db.CustomerOrderLine.insert({clineOrderID: , clineProductID: , clineProductQuantity: , clineProductCustom: , clinePoductPainted: , clineStatus: ""})
+
+$$$ Customer Return
+
+db.CustomerReturn.insert({returnID: , returnOrderID: , returnStatus: ""})
+
+$$$ Customer Return Line
+
+db.CustomerReturnLine.insert({rlineReturnID: , rlineProductID: , rlineProductQuantity: , rlineStatus: ""})
+
+$$$ Purchase Order
+
+db.PurchaseOrder.insert({purchaseID: , purchaseTimePlaced: , purchaseTimeReceived: , purchaseStatus: ""})
+
+$$$ Purchase Order Line
+
+db.PurchaseOrderLine.insert({plineOrderID: , plineProductID: , plineProductQuantity: , plineStatus: ""})
+
+$$$ Supplier
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="326E1CBB-E8E0-42DC-2002-5EFB9BE2E2E9" name="PurchaseOrder">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:10:08 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="purchaseID" id="A0234915-9BC2-910A-3B28-C4BCBF271F48">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:10:08 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="purchaseTimePlaced" id="7ED3ED6C-7B49-8347-8A4F-DDF13300218D">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:10:08 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="purchaseStatus" id="345B611E-068C-A327-8470-4CEB8173E897">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:14:45 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ED196691-778A-D42B-BD46-FA9C185DD305" name="CustomerOrderv1_PK">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:10:08 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A0234915-9BC2-910A-3B28-C4BCBF271F48"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="01091255-AB7D-E11E-4FE9-580D612DEF39" name="CustomerOrderLine">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>329FBE69-C1D5-02A4-8394-F5011865F5E7</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="productID" id="7F1FC759-C47D-ECCC-C787-A93E61E5FBDE">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>C3BB164D-92E9-C2D1-6ADC-D9B32DEFBA7B</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="productName" id="01EB247C-7C96-AF2F-298F-115C0805AE31">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>FFAF232A-44FA-36AC-309B-0E37AB6900D9</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="productQuantity" id="B4F6E915-A9AB-109C-D02D-6986F865B197">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:49:56 UTC</createdTime>
+<generatorID>F104309B-F42A-22B7-CB38-F57AAC1E31FF</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="orderID" id="29B926D4-E93B-6A1F-6DEA-F63477FFF37B">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:57:17 UTC</createdTime>
+<generatorID>FEF6ED85-8CBA-5D33-C1BB-C2AB735B8949</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<referedAttribute>F0FBAD3D-BCC1-A949-8818-22CCED514577</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CustomerOrder orderID" id="E91B0530-B486-90F8-9216-A73AD70AB6B9">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:12:27 UTC</createdTime>
+<generatorID>C5E1B7A8-0FC4-817B-764A-C668FB2749F6</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<referedAttribute>F0FBAD3D-BCC1-A949-8818-22CCED514577</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="55696665-3836-CC97-3D7B-E4728AAD65F3" name="CustomerOrderLine PK">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:57:01 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>29B926D4-E93B-6A1F-6DEA-F63477FFF37B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

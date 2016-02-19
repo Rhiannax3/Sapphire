@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="72578097-67B8-DE31-085F-30D56EA05399" name="PurchaseOrderLine">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:55:58 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="plineProductID" id="995D6CE1-D513-86B7-57BA-5E26B4143FF9">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:55:58 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="plineProductName" id="99AB09A2-B9F9-FF59-B5B0-FF3943D07867">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:55:58 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="plineProductQuantity" id="67E0C30C-7BCA-4081-27EB-1BFAC60C30F1">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:55:58 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="plineStatus" id="E31915D4-9538-462C-6829-13207335F96E">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-19 14:43:54 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CustomerOrderv1_orderID" id="862BBD65-5C2F-20DE-B897-C3A8F7188E75">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:11:08 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D09E305F-35FE-B0EF-8D5E-9D1CEB02D11F" referredColumn="A0234915-9BC2-910A-3B28-C4BCBF271F48"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D8CA3661-12A6-5F37-2A75-D14BDB73535A" name="PurchaseOrderLine_CustomerOrderv1_FK">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:11:08 UTC</createdTime>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="862BBD65-5C2F-20DE-B897-C3A8F7188E75"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

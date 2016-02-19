@@ -1,0 +1,139 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="81154379-F481-EE97-B83F-31960D07C63E" name="Address">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:59 UTC</createdTime>
+<generatorID>0E19CB45-FE57-A5C1-5210-A27F06307C3D</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="house" id="65C7770E-38CA-ACDA-5EE8-AB874E4873E9">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:59 UTC</createdTime>
+<generatorID>3D8C0BEB-0C0D-01C3-FABA-D044767F2B0A</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<sourceType>Manual</sourceType>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="street" id="705CED82-CBCF-46FA-C34B-24EAF140966E">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:59 UTC</createdTime>
+<generatorID>3D206252-5023-D1AC-CD63-72A7594A7FF8</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="city" id="885EBCB1-F35C-4701-C5E2-7158BCB19A44">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:59 UTC</createdTime>
+<generatorID>B6654A4E-1462-0B8B-52E0-7D7BC882210B</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="county" id="C18D0B3F-740F-3557-1FFF-B89D949996F4">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:59 UTC</createdTime>
+<generatorID>38291FCE-72D3-BB76-B494-7486DBD5F9AF</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="postcode" id="79A51B20-29E6-6949-EF54-DDD0A347BBB3">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:59 UTC</createdTime>
+<generatorID>C6D58A8B-5B1D-25CE-5878-4E44DFA45830</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="country" id="3A3E111D-DD93-EC84-A16F-E8F951B5E88C">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:28:59 UTC</createdTime>
+<generatorID>BE945251-1FE5-FCD2-C1FF-74C84400E9A9</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="customerID" id="78CB6BA4-289B-28CD-93FE-5B3E35E71D61">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 14:32:43 UTC</createdTime>
+<generatorID>A3C66DC7-17A3-3634-1BE3-DC54BBE8A723</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<referedAttribute>47F9B040-ED81-1FB4-A0E1-794158275BE3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Customer customerID" id="85B22BAB-BE56-A68F-A535-ABA54DED4C9A">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-02-17 15:12:27 UTC</createdTime>
+<generatorID>52CC9F06-4139-671B-6AD2-E428A01BAE3F</generatorID>
+<ownerDesignName>Oracle ERD</ownerDesignName>
+<engineerTo>
+<item key="0BF9A54A-3861-15AA-CB33-E2235CFDE320" value="true"/>
+</engineerTo>
+<referedAttribute>47F9B040-ED81-1FB4-A0E1-794158275BE3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>
