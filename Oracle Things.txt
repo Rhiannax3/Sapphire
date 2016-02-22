@@ -1,0 +1,112 @@
+$$$ Customer
+
+INSERT INTO CUSTOMER VALUES ( 1, 'Cat Smith', to_date('1992-10-03', 'yyyy-mm-dd'), 'active', 'cat@kittens.com', 4476654987740 );
+INSERT INTO CUSTOMER VALUES ( 2, 'Oliver Heald', to_date('1968-12-23', 'yyyy-mm-dd'), 'active', 'tory@kittens.com', 447676537740 );
+													   ({customerID, customerName, customerDateOfBirth, customerStatus, customerEmail, customerPhone })
+
+$$$ Product
+
+INSERT INTO PRODUCT VALUES ( 1, 'Incredibly Basic Gnome', 10.00, 20, 20, 20, 3 );
+INSERT INTO PRODUCT VALUES ( 2, 'Less Basic Gnome', 40.00, 20, 20, 20, 3 );
+INSERT INTO PRODUCT VALUES ( 3, 'Slightly Interesting Basic Gnome', 100.00, 20, 20, 20, 4 );
+INSERT INTO PRODUCT VALUES ( 4, 'Very Dull Gnome', 1000.00, 20, 20, 20, 6 );
+INSERT INTO PRODUCT VALUES ( 5, 'Golden Gnome', 1400.00, 3, 3, 3, 1 );
+INSERT INTO PRODUCT VALUES ( 6, 'Ruby Gnome', 2000.00, 5, 5, 5, 1 );
+INSERT INTO PRODUCT VALUES ( 7, 'Magical Diamond Gnome', 3400.00, 3, 3, 3, 1 );
+INSERT INTO PRODUCT VALUES ( 8, 'Unicorn Candy Gnome Faerie', 8000.00, 1, 1, 1, 2 );
+													( productID, productName, productStockTotal, productStockAvailable, productStockThreshold, productLocationID)
+
+$$$ Location
+
+INSERT INTO LOCATION VALUES ( 1, 'Area Magic Shelf 101' )
+INSERT INTO LOCATION VALUES ( 2, 'Area Magic Shelf 102' )
+INSERT INTO LOCATION VALUES ( 3, 'Area Basic Shelf 101' )
+INSERT INTO LOCATION VALUES ( 4, 'Area Basic Shelf 102' )
+INSERT INTO LOCATION VALUES ( 5, 'Area Basic Shelf 103' )
+INSERT INTO LOCATION VALUES ( 6, 'Area Basic Shelf 201' )
+													 ( locationID, locationWarehouse)
+													
+$$$ Delivery Address
+
+INSERT INTO DELIVERYADDRESS VALUES ( 1, '1', 'Pusscat Lane', 'Kitty', 'Puss', 'K1TTS0', 'England', 1 );
+INSERT INTO DELIVERYADDRESS VALUES ( 2, '11', 'Street', 'Letchworth Garden City', 'Hertfordshire', 'SG6 OH1', 'England', 2 )
+																	({ deliveryID, deliveryHouse, deliveryStreet, deliveryCity, deliveryCounty, deliveryPostcode, deliveryCountry, deliveryZoneID })
+
+$$ Global Distribution
+
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 1, 'NORTH001', 20, 0, 16 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 2, 'NORTH002', 20, 0, 16 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 3, 'EAST001', 10, 0, 8 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 4, 'EAST002', 10, 0, 8 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 5, 'WEST001', 10, 0, 8 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 6, 'WEST002', 10, 0, 8 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 7, 'SOUTH001', 10, 0, 8 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 8, 'SOUTH002', 10, 0, 8 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 9, 'WALES001', 10, 0, 8 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 10, 'SCOT001', 10, 0, 8 )
+																	    ( zoneID, zoneLocation, zoneCapacity, zoneLevel, zoneThreshold )
+
+$$$ Billing Address
+
+INSERT INTO BILLINGADDRESS VALUES ( 1, '1', 'Pusscat Lane', 'Kitty', 'Puss', 'K1TTS0', 'England', 1 );
+INSERT INTO BILLINGADDRESS VALUES ( 2, '11', 'Street', 'Letchworth Garden City', 'Hertfordshire', 'SG6 OH1', 'England', 2 )
+																({billingID: , billingHouse: "", billingStreet: "", billingCity: "", billingCounty: "", billingPostcode: })
+
+$$$ Card Info
+
+
+db.CardInfo.insert({cardID: , cardNumber: , cardExpiry: , cardSecurity: , cardBillingID: })
+
+$$$ Customer Order
+
+INSERT INTO CUSTOMERORDER VALUES ( 000001, to_date ('9:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1 )
+INSERT INTO CUSTOMERORDER VALUES ( 000002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1 )
+
+$$$ Customer Order Line
+
+INSERT INTO CUSTOMERORDERLINE VALUES ( 000001, 1, 1, 1, 0, 0 )
+db.CustomerOrderLine.insert({clineOrderID: , clineProductID: , clineProductQuantity: , clineProductCustom: , clinePoductPainted: , clineStatus: ""})
+
+$$$ Customer Return
+
+
+db.CustomerReturn.insert({returnID: , returnOrderID: , returnStatus: ""})
+
+$$$ Customer Return Line
+
+
+db.CustomerReturnLine.insert({rlineReturnID: , rlineProductID: , rlineProductQuantity: , rlineStatus: ""})
+
+
+$$$ Purchase Order
+
+INSERT INTO PURCHASEORDER VALUES ( 000001, to_date (10:25:30 AM 20/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date (09:15:30 AM 23/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete' )
+																  ({purchaseID: , purchaseTimePlaced: , purchaseTimeReceived: , purchaseStatus: ""})
+
+$$$ Purchase Order Line
+
+INSERT INTO PURCHASEORDERLINE VALUES ( 000001, 000001, 1, 'stocked' )
+INSERT INTO PURCHASEORDERLINE VALUES ( 000001, 000002, 12, 'stocked' )
+INSERT INTO PURCHASEORDERLINE VALUES ( 000001, 000004, 4, 'stocked' )
+																		 ({plineOrderID: , plineProductID: , plineProductQuantity: , plineStatus: ""})
+
+$$$ Supplier
+
+
+Open SQL  something like oraclexe >> sqlplus
+>> SYSTEM
+>>  password
+
+then open something else
+
+
+
+
+
+
+
+
+
+
+
+
