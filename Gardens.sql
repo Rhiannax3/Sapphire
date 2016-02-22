@@ -1,0 +1,3 @@
+BEGIN
+INSERT INTO PRODUCT VALUES ( 1, 'Incredibly Basic Gnome', 20, 20, 20, 10.00 );
+END;
