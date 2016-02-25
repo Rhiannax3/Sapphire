@@ -14,13 +14,13 @@ CREATE TABLE BillingAddress
     billingCity         VARCHAR2 (45) ,
     billingCounty       VARCHAR2 (45) ,
     billingPostcode     VARCHAR2 (10) ,
-    billingCountry      VARCHAR2 (20) ,
-    Customer_customerID INTEGER NOT NULL
+    billingCountry      VARCHAR2 (20)
   ) ;
 ALTER TABLE BillingAddress ADD CONSTRAINT BillingAddress_PK PRIMARY KEY ( billingID ) ;
 
 CREATE TABLE CallCentreEmployee
   ( employeeID INTEGER NOT NULL
+    employeeName  VARCHAR (45) ;
   ) ;
 ALTER TABLE CallCentreEmployee ADD CONSTRAINT CallCentreEmployee_PK PRIMARY KEY ( employeeID ) ;
 
@@ -30,7 +30,7 @@ CREATE TABLE CardInfo
     cardNumber          INTEGER ,
     expiryDate          INTEGER ,
     securityCode        INTEGER ,
-    Customer_customerID INTEGER NOT NULL
+    BillingAddress_billingID INTEGER NOT NULL
   ) ;
 ALTER TABLE CardInfo ADD CONSTRAINT CardInfo_PK PRIMARY KEY ( cardNumber ) ;
 
@@ -41,7 +41,10 @@ CREATE TABLE Customer
     customerDateOfBirth DATE ,
     customerStatus      VARCHAR2 (10) ,
     customerEmail       VARCHAR2 (45) ,
-    customerPhone       INTEGER
+    customerPhone       INTEGER,
+    DeliveryAddress_deliveryID INTEGER NOT NULL,
+    BillingAddress_billingID   INTEGER NOT NULL,
+    CardInfo_cardNumber        INTEGER NOT NULL
   ) ;
 ALTER TABLE Customer ADD CONSTRAINT Customer_PK PRIMARY KEY ( customerID ) ;
 
@@ -59,26 +62,36 @@ ALTER TABLE CustomerOrder ADD CONSTRAINT CustomerOrder_PK PRIMARY KEY ( orderID 
 CREATE TABLE CustomerOrderLine
   (
     clineID               INTEGER NOT NULL ,
-    clineProductID        INTEGER ,
-    clineProductName      VARCHAR2 (45) ,
     clineProductQuantity  INTEGER ,
     clineProductCustom    NUMBER ,
     clineProductPainted   NUMBER ,
     clineStatus           VARCHAR2 (45) ,
     CustomerOrder_orderID INTEGER NOT NULL ,
     WarehouseEmployee_warehouseID INTEGER NOT NULL ,
-    Product_productID                     INTEGER NOT NULL
+    Product_productID             INTEGER NOT NULL
   ) ;
 ALTER TABLE CustomerOrderLine ADD CONSTRAINT CustomerOrderLine_PK PRIMARY KEY ( clineID ) ;
 
 
 CREATE TABLE CustomerReturn
   (
-    returnCondition       NUMBER ,
-    returnStatus          NUMBER ,
+    returnID              NUMBER ,
     returnReceived        DATE ,
+    returnStatus          VARCHAR (45) ,
     CustomerOrder_orderID INTEGER NOT NULL
   ) ;
+ALTER TABLE CustomerReturn ADD CONSTRAINT CustomerReturn_PK PRIMARY KEY ( returnID ) ;
+
+CREATE TABLE ReturnOrderLine
+  (
+    rlineID               INTEGER NOT NULL ,
+    rlineProductQuantity  INTEGER ,
+    rlineStatus           VARCHAR2 (45) ,
+    CustomerReturn_returnID   INTEGER NOT NULL ,
+    WarehouseEmployee_warehouseID INTEGER NOT NULL ,
+    CustomerOrderLine_clineID     INTEGER NOT NULL
+  ) ;
+ALTER TABLE ReturnOrderLine ADD CONSTRAINT ReturnOrderLine_PK PRIMARY KEY ( rlineID ) ;
 
 
 CREATE TABLE DeliveryAddress
@@ -90,7 +103,6 @@ CREATE TABLE DeliveryAddress
     deliveryCounty            VARCHAR2 (45) ,
     deliveryPostcode          VARCHAR2 (10) ,
     deliveryCountry           VARCHAR2 (20) ,
-    Customer_customerID       INTEGER NOT NULL ,
     GlobalDistribution_zoneID INTEGER NOT NULL
   ) ;
 ALTER TABLE DeliveryAddress ADD CONSTRAINT DeliveryAddress_PK PRIMARY KEY ( deliveryID ) ;
@@ -132,7 +144,8 @@ CREATE TABLE PurchaseOrder
   (
     purchaseID         INTEGER NOT NULL ,
     purchaseTimePlaced DATE ,
-    purchaseStatus     VARCHAR2 (45)
+    purchaseStatus     VARCHAR2 (45) ,
+    Supplier_supplierID INTEGER NOT NULL
   ) ;
 ALTER TABLE PurchaseOrder ADD CONSTRAINT PurchaseID_PK PRIMARY KEY ( purchaseID ) ;
 
@@ -140,8 +153,6 @@ ALTER TABLE PurchaseOrder ADD CONSTRAINT PurchaseID_PK PRIMARY KEY ( purchaseID 
 CREATE TABLE PurchaseOrderLine
   (
     plineID                  INTEGER NOT NULL ,
-    plineProductID           INTEGER ,
-    plineProductName         VARCHAR2 (45) ,
     plineProductQuantity     INTEGER ,
     plineStatus              VARCHAR2 (20) ,
     PurchaseOrder_purchaseID INTEGER NOT NULL ,
@@ -177,16 +188,18 @@ ALTER TABLE SupplierInfo ADD CONSTRAINT SupplierInfo_PK PRIMARY KEY ( supplierIn
 CREATE TABLE WarehouseEmployee
   (
     warehouseID               INTEGER NOT NULL ,
+    warehouseName             VARCHAR (45) ,
     warehouseRole             VARCHAR2 (20) ,
     warehouseForklift         NUMBER ,
     PurchaseOrderLine_plineID INTEGER NOT NULL
   ) ;
 ALTER TABLE WarehouseEmployee ADD CONSTRAINT WarehouseEmployee_PK PRIMARY KEY ( warehouseID ) ;
 
+ALTER TABLE Customer ADD CONSTRAINT C_DeliveryAddress_FK FOREIGN KEY ( DeliveryAddress_deliveryID ) REFERENCES DeliveryAddress ( deliveryID ) ;
 
-ALTER TABLE BillingAddress ADD CONSTRAINT BA_Customer_FK FOREIGN KEY ( Customer_customerID ) REFERENCES Customer ( customerID ) ;
+ALTER TABLE Customer ADD CONSTRAINT C_BillingAddress_FK FOREIGN KEY ( BillingAddress_billingID ) REFERENCES BillingAddress ( billingID ) ;
 
-ALTER TABLE CardInfo ADD CONSTRAINT CI_Customer_FK FOREIGN KEY ( Customer_customerID ) REFERENCES Customer ( customerID ) ;
+ALTER TABLE Customer ADD CONSTRAINT C_CardInfo_FK FOREIGN KEY ( CardInfo_cardNumber ) REFERENCES CardInfo ( cardNumber ) ;
 
 ALTER TABLE CustomerOrderLine ADD CONSTRAINT COL_CustomerOrder_FK FOREIGN KEY ( CustomerOrder_orderID ) REFERENCES CustomerOrder ( orderID ) ;
 
@@ -204,17 +217,25 @@ ALTER TABLE DeliveryAddress ADD CONSTRAINT DA_Customer_FK FOREIGN KEY ( Customer
 
 ALTER TABLE DeliveryAddress ADD CONSTRAINT DA_GlobalDistribution_FK FOREIGN KEY ( GlobalDistribution_zoneID ) REFERENCES GlobalDistribution ( zoneID ) ;
 
+ALTER TABLE PurchaseOrder ADD CONSTRAINT PO_Supplier_FK FOREIGN KEY ( Supplier_supplierID ) REFERENCES Supplier ( supplierID ) ;
+
 ALTER TABLE PurchaseOrderLine ADD CONSTRAINT POL_Product_FK FOREIGN KEY ( Product_productID ) REFERENCES Product ( productID ) ;
 
 ALTER TABLE PurchaseOrderLine ADD CONSTRAINT POL_PurchaseOrder_FK FOREIGN KEY ( PurchaseOrder_purchaseID ) REFERENCES PurchaseOrder ( purchaseID ) ;
 
+ALTER TABLE PurchaseOrderLine ADD CONSTRAINT POL_WarehouseEmployee_FK FOREIGN KEY ( WarehouseEmployee_warehouseID ) REFERENCES WarehouseEmployee ( warehouseID ) ;
+
 ALTER TABLE Product ADD CONSTRAINT P_Location_FK FOREIGN KEY ( Location_locationID ) REFERENCES Location ( locationID ) ;
+
+ALTER TABLE ReturnOrderLine ADD CONSTRAINT ROL_CustomerReturn_FK FOREIGN KEY ( CustomerReturn_returnID ) REFERENCES CustomerReturn ( returnID ) ;
+
+ALTER TABLE ReturnOrderLine ADD CONSTRAINT ROL_CustomerOrderLine_FK FOREIGN KEY ( CustomerOrderLine_clineID ) REFERENCES CustomerOrderLine ( clineID ) ;
+
+ALTER TABLE ReturnOrderLine ADD CONSTRAINT ROL_WarehouseEmployee_FK FOREIGN KEY ( WarehouseEmployee_warehouseID ) REFERENCES WarehouseEmployee ( warehouseID ) ;
 
 ALTER TABLE SupplierInfo ADD CONSTRAINT SI_Supplier_FK FOREIGN KEY ( Supplier_supplierID ) REFERENCES Supplier ( supplierID ) ;
 
 ALTER TABLE SupplierInfo ADD CONSTRAINT SupplierInfo_Product_FK FOREIGN KEY ( Product_productID ) REFERENCES Product ( productID ) ;
-
-ALTER TABLE WarehouseEmployee ADD CONSTRAINT WE_PurchaseOrderLine_FK FOREIGN KEY ( PurchaseOrderLine_plineID ) REFERENCES PurchaseOrderLine ( plineID ) ;
 
 
 -- Oracle SQL Developer Data Modeler Summary Report: 

@@ -1,7 +1,13 @@
+$$ CardInfo
+
+INSERT INTO CARDINFO VALUES ( 1234567890123456, 1216, 123, 1 ) ;
+INSERT INTO CARDINFO VALUES ( 2345678901234567, 1217, 234, 2 ) ;
+													 ( cardNumber, cardExpiry, cardSecurity, cardCustomerID)
+
 $$$ Customer
 
-INSERT INTO CUSTOMER VALUES ( 1, 'Cat Smith', to_date('1992-10-03', 'yyyy-mm-dd'), 'active', 'cat@kittens.com', 4476654987740 );
-INSERT INTO CUSTOMER VALUES ( 2, 'Oliver Heald', to_date('1968-12-23', 'yyyy-mm-dd'), 'active', 'tory@kittens.com', 447676537740 );
+INSERT INTO CUSTOMER VALUES ( 1, 'Cat Smith', to_date('1992-10-03', 'yyyy-mm-dd'), 'active', 'cat@kittens.com', 4476654987740, 1, 1, 2345678901234567 );
+INSERT INTO CUSTOMER VALUES ( 2, 'Oliver Heald', to_date('1968-12-23', 'yyyy-mm-dd'), 'active', 'tory@kittens.com', 447676537740, 2, 2, 1234567890123456 );
 													   ({customerID, customerName, customerDateOfBirth, customerStatus, customerEmail, customerPhone })
 
 $$$ Product
@@ -34,38 +40,48 @@ INSERT INTO DELIVERYADDRESS VALUES ( 2, '11', 'Street', 'Letchworth Garden City'
 
 $$ Global Distribution
 
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 1, 'NORTH001', 20, 0, 16 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 2, 'NORTH002', 20, 0, 16 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 3, 'EAST001', 10, 0, 8 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 4, 'EAST002', 10, 0, 8 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 5, 'WEST001', 10, 0, 8 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 6, 'WEST002', 10, 0, 8 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 7, 'SOUTH001', 10, 0, 8 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 8, 'SOUTH002', 10, 0, 8 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 9, 'WALES001', 10, 0, 8 )
-INSERT INTO GLOBALDISTRIBUTION VALUES ( 10, 'SCOT001', 10, 0, 8 )
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 1, 'NORTH001', 20, 0, 16 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 2, 'NORTH002', 20, 0, 16 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 3, 'EAST001', 10, 0, 8 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 4, 'EAST002', 10, 0, 8 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 5, 'WEST001', 10, 0, 8 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 6, 'WEST002', 10, 0, 8 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 7, 'SOUTH001', 10, 0, 8 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 8, 'SOUTH002', 10, 0, 8 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 9, 'WALES001', 10, 0, 8 );
+INSERT INTO GLOBALDISTRIBUTION VALUES ( 10, 'SCOT001', 10, 0, 8 );
 																	    ( zoneID, zoneLocation, zoneCapacity, zoneLevel, zoneThreshold )
 
 $$$ Billing Address
 
-INSERT INTO BILLINGADDRESS VALUES ( 1, '1', 'Pusscat Lane', 'Kitty', 'Puss', 'K1TTS0', 'England', 1 );
-INSERT INTO BILLINGADDRESS VALUES ( 2, '11', 'Street', 'Letchworth Garden City', 'Hertfordshire', 'SG6 OH1', 'England', 2 )
+INSERT INTO BILLINGADDRESS VALUES ( 1, '1', 'Pusscat Lane', 'Kitty', 'Puss', 'K1TTS0', 'England', 1 ) ;
+INSERT INTO BILLINGADDRESS VALUES ( 2, '11', 'Street', 'Letchworth Garden City', 'Hertfordshire', 'SG6 OH1', 'England', 2 ) ;
 																({billingID: , billingHouse: "", billingStreet: "", billingCity: "", billingCounty: "", billingPostcode: })
 
-$$$ Card Info
+$$$ CallCentreEmployee
 
-
-db.CardInfo.insert({cardID: , cardNumber: , cardExpiry: , cardSecurity: , cardBillingID: })
-
+INSERT INTO CALLCENTREEMPLOYEE ( 201, 'Ray Smithy' ) ;
+																
 $$$ Customer Order
 
-INSERT INTO CUSTOMERORDER VALUES ( 000001, to_date ('9:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1 )
-INSERT INTO CUSTOMERORDER VALUES ( 000002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1 )
+INSERT INTO CUSTOMERORDER VALUES ( 100001, to_date ('9:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1, 201 ) ;
+INSERT INTO CUSTOMERORDER VALUES ( 100002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1, 201 ) ;
+																  ( orderID, orderTimePlaced, customerID, callCentreID)
 
+$$$ Warehouse Employee
+
+INSERT INTO WAREHOUSEEMPLOYEE ( 301, 'Ben Back', 'Stocker', 0 ) ;
+INSERT INTO WAREHOUSEEMPLOYEE ( 302, 'Petunia Snuggles', 'Stocker', 1 ) ;
+INSERT INTO WAREHOUSEEMPLOYEE ( 303, 'Daisy Petal', 'Painter', 0 ) ;
+															  ( warehouseID, warehouseName, warehouseRole, warehouseForklift )
+																  
 $$$ Customer Order Line
 
-INSERT INTO CUSTOMERORDERLINE VALUES ( 000001, 1, 1, 1, 0, 0 )
-db.CustomerOrderLine.insert({clineOrderID: , clineProductID: , clineProductQuantity: , clineProductCustom: , clinePoductPainted: , clineStatus: ""})
+INSERT INTO CUSTOMERORDERLINE VALUES ( 110001, 100001, 1, 10, 0, 0, 'dispatched', 1, 301 ) ;
+INSERT INTO CUSTOMERORDERLINE VALUES ( 110002, 100001, 3, 1, 0, 0, 'dispatched', 1, 301 ) ;
+INSERT INTO CUSTOMERORDERLINE VALUES ( 110003, 100001, 4, 1, 1, 1, 'dispatched', 1, 301 ) ;
+INSERT INTO CUSTOMERORDERLINE VALUES ( 110004, 100002, 7, 1, 1, 1, 'dispatched', 1, 302 ) ;
+db.CustomerOrderLine.insert({clineID, clineOrderID: , clineProductQuantity: , clineProductCustom: , clinePoductPainted: , clineStatus: ""})
 
 $$$ Customer Return
 

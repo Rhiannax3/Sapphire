@@ -1,58 +1,115 @@
-$$$ Customer
+$$$$$$$$$$ Start
 
-db.Customer.insert({customerID: , customerName: "", customerDateOfBirth: , customerEmail: "", customerPhone: , customerStatus: ""})
-db.Customer.insert({customerID: , customerName: "", customerDateOfBirth: , customerEmail: "", customerPhone: , customerStatus: ""})
+use admin
+db.createUser ({user:'test', pwd:'test', roles:[{role:'readWrite', db:'test', collection:'Customer'}]})
+db.runCommand ({updateRole:"test", priveleges:
+	[{resource:{db:"test", collection:"Customer"},
+	  actions:["find", "update", "insert", "remove"]}]})
+show dbs
+use Garden
+show collections
+db.Customer.find()pretty()
+db.Customer.find({customerID:800001},{customerID:1}).pretty()
+db.CustomerOrder.find({products:{productID:600001}}).pretty()
+db.CustomerOrder.find({"products.productID" : 600001}, {"products.productID":1, _id:0}).pretty()
+db.CustomerOrder.find({"products.custom" : /.*["sparkles"]/},{"products.productID":1, _id:0}).pretty()
 
-$$$ Product
+$$$$$$$$$$ Customer
 
-db.Product.insert({productID: , productName: "", productPrice: , stockTotal: , stockAvailable: stockThreshold: })
-db.Product.insert({productID: , productName: "", productPrice: , stockTotal: , stockAvailable: stockThreshold: })
-db.Product.insert({productID: , productName: "", productPrice: , stockTotal: , stockAvailable: stockThreshold: })
-db.Product.insert({productID: , productName: "", productPrice: , stockTotal: , stockAvailable: stockThreshold: })
+db.Customer.ensureIndex ( { customerID : 1 } , { unique : 1 } )
+db.Customer.insert ( {
+    customerID :          800001 ,
+    customerName :        "Cat Smith" , 
+    customerDateOfBirth : new Date (1952, 10, 04) , 
+    customerEmail :       "cat@kittens.com" , 
+    customerPhone :       4457807876587 , 
+    customerStatus :      "active" ,
+    customerCard : { cardNumber : 1234567890123456 , cardExpiry : "05/16" , cardSecurity : 123 , cardBillingID: 810001 } } )
+    customerAddress [ { addressID : 810001 , addressHouse : "1" , addressStreet : "Pusscat Lane" , addressCity : "Kitty" , addressCounty : "Puss" , addressPostcode : "K1TTS0" } ]
+db.Customer.insert ( { customerID : 800002 , 
+    customerName : "Oliver Heald" , 
+    customerDateOfBirth : new Date (1940, 02, 18) , 
+    customerEmail : "heald@tory.com" , 
+    customerPhone : 4454370987976 , 
+    customerStatus : "hold" ,
+    customerCard : { cardNumber : 2345678901234567 , cardExpiry : "05/17" , cardSecurity : 234 , cardBillingID: 810002 } } )
+    customerAddress [ { addressID : 810002 , addressHouse : "11" , addressStreet : "Street" , addressCity : "Letchworth Garden City" , addressCounty : "Hertfordshire" , addressPostcode : "SG6 OH1" }
+                      { addressID : 810003 , addressHouse : "12" , addressStreet : "Street" , addressCity : "Letchworth Garden City" , addressCounty : "Hertfordshire" , addressPostcode : "SG6 OH1" } } )
 
-$$$ Delivery Address
+$$$$$$$$$$ Product
 
-db.DeliveryAddress.insert({deliveryID: , deliveryHouse: "", deliveryStreet: "", deliveryCity: "", deliveryCounty: "", deliveryPostcode: , deliveryZoneID: })
+db.Product.ensureIndex ( { productID : 1 } , { unique : 1 } )
+db.Product.insert ( { productID : 600001 , productName : "Incredibly Basic Gnome" ,           productPrice : 10 ,   stockTotal : 20 , stockAvailable : 20 , stockThreshold : 16 , stockLocation : "Area Basic Shelf 101" } )
+db.Product.insert ( { productID : 600002 , productName : "Less Basic Gnome" ,                 productPrice : 40 ,   stockTotal : 20 , stockAvailable : 20 , stockThreshold : 16 , stockLocation : "Area Basic Shelf 102" } )
+db.Product.insert ( { productID : 600003 , productName : "Slightly Interesting Basic Gnome" , productPrice : 100 ,  stockTotal : 20 , stockAvailable : 20 , stockThreshold : 16 , stockLocation : "Area Basic Shelf 103" } )
+db.Product.insert ( { productID : 600004 , productName : "Very Dull Gnome" ,                  productPrice : 1000 , stockTotal : 20 , stockAvailable : 20 , stockThreshold : 16 , stockLocation : "Area Basic Shelf 201" } )
+db.Product.insert ( { productID : 600005 , productName : "Golden Gnome" ,                     productPrice : 1400 , stockTotal : 3 ,  stockAvailable : 3 ,  stockThreshold : 3 ,  stockLocation : "Area Basic Shelf 202" } )
+db.Product.insert ( { productID : 600006 , productName : "Ruby Gnome" ,                       productPrice : 2000 , stockTotal : 5 ,  stockAvailable : 5 ,  stockThreshold : 5 ,  stockLocation : "Area Basic Shelf 202" } )
+db.Product.insert ( { productID : 600007 , productName : "Magical Diamond Gnome" ,            productPrice : 3400 , stockTotal : 3 ,  stockAvailable : 3 ,  stockThreshold : 3 ,  stockLocation : "Area Magic Shelf 101" } )
+db.Product.insert ( { productID : 600008 , productName : "Unicorn Candy Gnome Faerie" ,       productPrice : 8000 , stockTotal : 1 ,  stockAvailable : 1 ,  stockThreshold : 1 ,  stockLocation : "Area Magic Shelf 102" } )
 
-$$ Global Distribution
+$$$$$$$$$$ Global Distribution
 
-db.GlobalDistribution.insert({zoneID: , zoneLocation: "", zoneCapacity: , zoneLevel: , zoneThreshold: })
-
-$$$ Billing Address
-
-db.BillingAddress.insert({billingID: , billingHouse: "", billingStreet: "", billingCity: "", billingCounty: "", billingPostcode: })
-
-$$$ Card Info
-
-db.CardInfo.insert({cardID: , cardNumber: , cardExpiry: , cardSecurity: , cardBillingID: })
-
-$$$ Customer Order
-
-db.CustomerOrder.insert({orderID: , orderTimePlaced: })
-
-$$$ Customer Order Line
-
-db.CustomerOrderLine.insert({clineOrderID: , clineProductID: , clineProductQuantity: , clineProductCustom: , clinePoductPainted: , clineStatus: ""})
-
-$$$ Customer Return
-
-db.CustomerReturn.insert({returnID: , returnOrderID: , returnStatus: ""})
-
-$$$ Customer Return Line
-
-db.CustomerReturnLine.insert({rlineReturnID: , rlineProductID: , rlineProductQuantity: , rlineStatus: ""})
-
-$$$ Purchase Order
-
-db.PurchaseOrder.insert({purchaseID: , purchaseTimePlaced: , purchaseTimeReceived: , purchaseStatus: ""})
-
-$$$ Purchase Order Line
-
-db.PurchaseOrderLine.insert({plineOrderID: , plineProductID: , plineProductQuantity: , plineStatus: ""})
-
-$$$ Supplier
+db.GlobalDistribution.ensureIndex ( { zoneID : 1 } , { unique : 1 } )
+db.GlobalDistribution.insert ( { zoneID : 900001 , zoneLocation :  "NORTH001" , zoneCapacity : 20 , zoneLevel : 0 , zoneThreshold : 16 } )
+db.GlobalDistribution.insert ( { zoneID : 900002 , zoneLocation :  "NORTH002" , zoneCapacity : 20 , zoneLevel : 0 , zoneThreshold : 16 } )
+db.GlobalDistribution.insert ( { zoneID : 900003 , zoneLocation :  "EAST001" ,  zoneCapacity : 10 , zoneLevel : 0 , zoneThreshold : 8 } )
+db.GlobalDistribution.insert ( { zoneID : 900004 , zoneLocation :  "EAST002" ,  zoneCapacity : 10 , zoneLevel : 0 , zoneThreshold : 8 } )
+db.GlobalDistribution.insert ( { zoneID : 900005 , zoneLocation :  "WEST001" ,  zoneCapacity : 10 , zoneLevel : 0 , zoneThreshold : 8 } )
+db.GlobalDistribution.insert ( { zoneID : 900006 , zoneLocation :  "WEST002" ,  zoneCapacity : 10 , zoneLevel : 0 , zoneThreshold : 8 } )
+db.GlobalDistribution.insert ( { zoneID : 900007 , zoneLocation :  "SOUTH001" , zoneCapacity : 10 , zoneLevel : 0 , zoneThreshold : 8 } )
+db.GlobalDistribution.insert ( { zoneID : 900008 , zoneLocation :  "SOUTH002" , zoneCapacity : 10 , zoneLevel : 0 , zoneThreshold : 8 } )
+db.GlobalDistribution.insert ( { zoneID : 900009 , zoneLocation :  "WALES001" , zoneCapacity : 10 , zoneLevel : 0 , zoneThreshold : 8 } )
+db.GlobalDistribution.insert ( { zoneID : 900010 , zoneLocation :  "SCOT001" ,  zoneCapacity : 10 , zoneLevel : 0 , zoneThreshold : 8 } )
 
 
+$$$$$$$$$$ Customer Order
+
+db.CustomerOrder.ensureIndex ( { orderID : 1 } , { unique : 1 } )
+db.CustomerOrder.insert ( { 
+	orderID : 100001, 
+	orderCustomerID : 800001, 
+	orderAddressID : 800001, 
+	orderEmployee : 301, 
+	orderTimePlaced : new Date (2016, 30, 01, 12, 30, 05), 
+	orderTimeDispatched : new Date (2016, 01, 02, 15, 40, 05),
+    products : [
+    	{ productID : 600001 , productQuantity : 10 },
+        { productID : 600003 , productQuantity : 1 } ,
+        { productID : 600004 , productQuantity : 1 , custom : "Extra sparkles" } 
+    ]
+})
+db.CustomerOrder.insert ( { orderID : 100002, orderCustomerID : 800002 , orderAddressID : 800003 , orderEmployee : 301 , orderTimePlaced :  , orderTimeDispatched :  ,
+                            products : { { productID : 600007 , productQuantity : 1 , custom : "Paint everything black" } } } )
+
+$$$$$$$$$$ Customer Return
+
+db.CustomerReturn.ensureIndex ( { returnID : 1 } , { unique : 1 } )
+db.CustomerReturn.insert ( { returnID : 111001 , returnOrderID : 100001 , returnTimeReceived :  , returnStatus : "complete" ,
+                             products [ { productID : 600001 , productCondition : "good" }
+                                          productID : 600003 , productCondition : "damaged" ] } )
+
+$$$$$$$$$$ Purchase Order
+
+db.PurchaseOrder.ensureIndex ( { purchaseID : 1 } , { unique : 1 } )
+db.PurchaseOrder.insert ( { purchaseID : 500001 , purchaseTimePlaced : new Date (2016, 03, 10) , purchaseTimeReceived : new Date (2016, 03, 19) , purchaseStatus : "complete" } )
+
+db.Test.ensureIndex({purchaseID:1}, {unique:1})
+db.Test.insert ({purchaseID:1, something:1})
+db.Test.insert ({something:1})
+
+$$$$$$$$$$ Employee
+
+db.Employee.ensureIndex ( { employeeID : 1 } , { unique : 1 } )
+db.Employee.insert ( { employeeID : 301 , employeeName : "Ray Smithy" ,    employeeDepartment : "Call Centre" , employeeRole : "Salesperson" } )
+db.Employee.insert ( { employeeID : 302 , employeeName : "Ben Back" ,      employeeDepartment : "Warehouse" ,   employeeRole : "Stocker" , employeeForklift : 0 } )
+db.Employee.insert ( { employeeID : 303 , employeeName : "Gregory House" , employeeDepartment : "Warehouse" ,   employeeRole : "Stocker" , employeeForklift : 1 } )
+db.Employee.insert ( { employeeID : 304 , employeeName : "Daisy Petal" ,   employeeDepartment : "Warehouse" ,   employeeRole : "Painter" , employeeForklift : 0 } )
+
+
+$$$$$$$$$$ Supplier
+
+db..ensureIndex ( { ID : 1 } , { unique : 1 } )
 
 
 
