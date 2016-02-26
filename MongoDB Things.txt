@@ -1,29 +1,46 @@
-$$$$$$$$$$ Start
+$$$$$$$$$$ Setting Up Users
 
 use admin
 db.createUser ({user:'test', pwd:'test', roles:[{role:'readWrite', db:'test', collection:'Customer'}]})
 db.runCommand ({updateRole:"test", priveleges:
 	[{resource:{db:"test", collection:"Customer"},
 	  actions:["find", "update", "insert", "remove"]}]})
+
+$$$$$$$$$$ Displaying The Database
+
 show dbs
 use Garden
 show collections
 db.Customer.find()pretty()
 db.Customer.find({customerID:800001},{customerID:1}).pretty()
 db.CustomerOrder.find({products:{productID:600001}}).pretty()
-db.CustomerOrder.find({"products.productID" : 600001}, {"products.productID":1, _id:0}).pretty()
+db.CustomerOrder.find({ products : {$all : [
+	{ $elemMatch : {productQuantity:1}},
+	{ $elemMatch : {productQuantity:1}}]}}, {"products.productID.$":1, _id:0}).pretty()
 db.CustomerOrder.find({"products.custom" : /.*["sparkles"]/},{"products.productID":1, _id:0}).pretty()
+
+db.CustomerOrder.find({
+	products : {
+		$elemMatch : {productQuantity:1}
+		}}, {
+			"products.productID.$":1, _id:0
+		}
+		).pretty()
+
+$$$$$$$$$$ Updating Values
+
+db.CustomerOrder.update ( { "products.productID" : 600001 } , { "$set" : {"products.$.productStatus" : "picked" } } )
 
 $$$$$$$$$$ Customer
 
 db.Customer.ensureIndex ( { customerID : 1 } , { unique : 1 } )
 db.Customer.insert ( {
-    customerID :          800001 ,
-    customerName :        "Cat Smith" , 
+    customerID : 800001 ,
+    customerName : "Cat Smith" , 
     customerDateOfBirth : new Date (1952, 10, 04) , 
-    customerEmail :       "cat@kittens.com" , 
-    customerPhone :       4457807876587 , 
-    customerStatus :      "active" ,
+    customerEmail : "cat@kittens.com" , 
+    customerPhone : 4457807876587 , 
+    customerStatus : "active" ,
     customerCard : { cardNumber : 1234567890123456 , cardExpiry : "05/16" , cardSecurity : 123 , cardBillingID: 810001 } } )
     customerAddress [ { addressID : 810001 , addressHouse : "1" , addressStreet : "Pusscat Lane" , addressCity : "Kitty" , addressCounty : "Puss" , addressPostcode : "K1TTS0" } ]
 db.Customer.insert ( { customerID : 800002 , 
@@ -67,20 +84,28 @@ $$$$$$$$$$ Customer Order
 
 db.CustomerOrder.ensureIndex ( { orderID : 1 } , { unique : 1 } )
 db.CustomerOrder.insert ( { 
-	orderID : 100001, 
-	orderCustomerID : 800001, 
-	orderAddressID : 800001, 
-	orderEmployee : 301, 
-	orderTimePlaced : new Date (2016, 30, 01, 12, 30, 05), 
-	orderTimeDispatched : new Date (2016, 01, 02, 15, 40, 05),
+	orderID : 100001 , 
+	orderCustomerID : 800001 , 
+	orderAddressID : 800001 , 
+	orderEmployee : 301 , 
+	orderTimePlaced : new Date (2016, 30, 01, 12, 30, 05) , 
+	orderTimeDispatched : new Date (2016, 01, 02, 15, 40, 05) ,
     products : [
-    	{ productID : 600001 , productQuantity : 10 },
-        { productID : 600003 , productQuantity : 1 } ,
-        { productID : 600004 , productQuantity : 1 , custom : "Extra sparkles" } 
+    	{ productID : 600001 , productQuantity : 10 , productStatus : "picked" , warehouseID : 302 } ,
+        { productID : 600003 , productQuantity : 1 ,  productStatus : "packed" , warehouseID : 303 } ,
+        { productID : 600004 , productQuantity : 1 ,  productStatus : "painted" , warehouseID : 304 , custom : "Extra sparkles" }
     ]
 })
 db.CustomerOrder.insert ( { orderID : 100002, orderCustomerID : 800002 , orderAddressID : 800003 , orderEmployee : 301 , orderTimePlaced :  , orderTimeDispatched :  ,
                             products : { { productID : 600007 , productQuantity : 1 , custom : "Paint everything black" } } } )
+
+$$$$$$$$$$ CustomerOrderLine
+
+db.CustomerOrder.ensureIndex ( { orderID : 1 } , { unique : 1 } )
+dbCustomerOrderLine.insert ( 
+	{ customerOrderID : 100001 ,
+	  productID : 600001 }
+)
 
 $$$$$$$$$$ Customer Return
 
