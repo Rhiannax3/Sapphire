@@ -1,0 +1,157 @@
+$$ CardInfo
+
+INSERT INTO PaymentDetails VALUES ( 1234567890123456, 1216, 123, 1 ) ;
+INSERT INTO PaymentDetails VALUES ( 2345678901234567, 1217, 234, 2 ) ;
+								  ( cardNumber, cardExpiry, cardSecurity, cardCustomerID)
+
+$$$ Customer
+
+INSERT INTO Customer VALUES ( 1, 'Cat Smith', to_date('1992-10-03', 'yyyy-mm-dd'), 'active', 'cat@kittens.com', 4476654987740, '1', 'K1TTS0', 2345678901234567, 234 );
+INSERT INTO Customer VALUES ( 2, 'Oliver Heald', to_date('1968-12-23', 'yyyy-mm-dd'), 'active', 'tory@kittens.com', 447676537740, '11', 'SG6 OH1' 1234567890123456, 123 );
+							({customerID, customerName, customerDateOfBirth, customerStatus, customerEmail, customerPhone, customerAddressHouse, customerAddressPostcode, customerPaymentNumber, customerPaymentSecurity })
+
+$$$ Product
+
+INSERT INTO Product VALUES ( 600001, 'Incredibly Basic Gnome',           10,   20, 20, 20, 0, 'Area Basic Shelf 101' );
+INSERT INTO Product VALUES ( 600002, 'Less Basic Gnome',                 40,   20, 20, 20, 0, 'Area Basic Shelf 101' );
+INSERT INTO Product VALUES ( 600003, 'Slightly Interesting Basic Gnome', 100,  20, 20, 20, 0, 'Area Basic Shelf 102' );
+INSERT INTO Product VALUES ( 600004, 'Very Dull Gnome',                  1000, 20, 20, 20, 0, 'Area Basic Shelf 201' );
+INSERT INTO Product VALUES ( 600005, 'Golden Gnome',                     1400, 3,  3,  3,  0, 'Area Magic Shelf 101' );
+INSERT INTO Product VALUES ( 600006, 'Ruby Gnome',                       2000, 5,  5,  5,  0, 'Area Magic Shelf 101' );
+INSERT INTO Product VALUES ( 600007, 'Magical Diamond Gnome',            3400, 3,  3,  3,  0, 'Area Magic Shelf 102' );
+INSERT INTO Product VALUES ( 600008, 'Unicorn Candy Gnome Faerie',       8000, 1,  1,  1,  0, 'Area Magic Shelf 201' );
+INSERT INTO Product VALUES ( 600009, 'Not So Great Gnome',               3000, 0,  0,  0,  1, 'Area Magic Shelf 202' );
+						   ( productID, productName, productPrice, productStockTotal, productStockAvailable, productStockThreshold, productDiscontinued )
+
+$$$ Location
+
+INSERT INTO WarehouseLocation VALUES ( 'Area Magic Shelf 101', 40, 0, 600005 )
+INSERT INTO WarehouseLocation VALUES ( 'Area Magic Shelf 102', 40, 0, 600006 )
+INSERT INTO WarehouseLocation VALUES ( 'Area Magic Shelf 201', 40, 0, 600007 )
+INSERT INTO WarehouseLocation VALUES ( 'Area Magic Shelf 202', 40, 0, 600008 )
+INSERT INTO WarehouseLocation VALUES ( 'Area Basic Shelf 101', 40, 0, 600001 )
+INSERT INTO WarehouseLocation VALUES ( 'Area Basic Shelf 102', 40, 0, 600002 )
+INSERT INTO WarehouseLocation VALUES ( 'Area Basic Shelf 103', 40, 0, 600003 )
+INSERT INTO WarehouseLocation VALUES ( 'Area Basic Shelf 201', 40, 0, 600004 )
+									 ( locationID, locationCapacity, locationTaken, productID )
+													
+$$$ Address
+
+INSERT INTO Address VALUES ( '1', 'Pusscat Lane', 'Kitty', 'Puss', 'K1TTS0' ) ;
+INSERT INTO Address VALUES ( '11', 'Street', 'Letchworth Garden City', 'Hertfordshire', 'SG6 OH1' ) ;
+						   ({addressID: , addressHouse: "", addressStreet: "", addressCity: "", addressCounty: "", addressPostcode: })
+
+$$$ Geo Distribution
+
+INSERT INTO GeoDistribution VALUES ( 'NORTH001', 20, 0, 16 );
+INSERT INTO GeoDistribution VALUES ( 'NORTH002', 20, 0, 16 );
+INSERT INTO GeoDistribution VALUES ( 'EAST001', 10, 0, 8 );
+INSERT INTO GeoDistribution VALUES ( 'EAST002', 10, 0, 8 );
+INSERT INTO GeoDistribution VALUES ( 'WEST001', 10, 0, 8 );
+INSERT INTO GeoDistribution VALUES ( 'WEST002', 10, 0, 8 );
+INSERT INTO GeoDistribution VALUES ( 'SOUTH001', 10, 0, 8 );
+INSERT INTO GeoDistribution VALUES ( 'SOUTH002', 10, 0, 8 );
+INSERT INTO GeoDistribution VALUES ( 'WALES001', 10, 0, 8 );
+INSERT INTO GeoDistribution VALUES ( 'SCOT001', 10, 0, 8 );
+								   ( zoneID, zoneCapacity, zoneLevel, zoneThreshold )
+
+$$$ Customer Order
+
+INSERT INTO CustomerOrder VALUES ( 100001, to_date ('09:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('10:10:10 AM 25/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 201 ) ;
+INSERT INTO CustomerOrder VALUES ( 100002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('11:30:05 AM 06/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 201 ) ;
+								 ( orderID, orderTimePlaced, orderTimeDispatched, orderStatus, orderEmployeeID, orderCustomerID, orderAddressHouse, orderAddressPostcode, orderZoneID )
+
+
+$$$ Customer Order Line
+
+INSERT INTO CustomerOrderLine VALUES ( 110001, 100001, 1, 10, 0, 0, 'dispatched', 1, 301 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 110002, 100001, 3, 1, 0, 0, 'dispatched', 1, 301 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 110003, 100001, 4, 1, 1, 1, 'dispatched', 1, 301 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 110004, 100002, 7, 1, 1, 1, 'dispatched', 1, 302 ) ;
+									 ({clineID, clineOrderID: , clineProductQuantity: , clineProductCustom: , clinePoductPainted: , clineStatus: ""})
+
+																	( returnID, returnReceived, returnStatus, returnCustomerOrderID )
+
+$$$ Customer Box Line
+
+INSERT INTO CustomerBoxLine VALUES ( 110001, 100001, 1, 10, 0, 0, 'dispatched', 1, 301 ) ;
+
+
+$$$ Customer Return Line
+
+INSERT INTO CustomerReturnLine VALUES ( 111101, 1, 'complete', 111001, 301, 100001 ) ;
+																		   (rlineID, rlineProductQuantity, rlineStatus, rlineReturnID, rlineWarehouseEmployeeID, rlineClineID )
+
+$$$ Purchase Order
+
+INSERT INTO StockOrder VALUES ( 500001, to_date (10:25:30 AM 20/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date (09:15:30 AM 23/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete' )
+																  ({purchaseID: , purchaseTimePlaced: , purchaseTimeReceived: , purchaseStatus: ""})
+
+$$$ Purchase Order Line
+
+INSERT INTO StockOrderLine VALUES ( 510001, 1, 'stocked', 500001, 1 ) ;
+INSERT INTO StockOrderLine VALUES ( 510002, 12, 'stocked', 500001, 2 ) ;
+INSERT INTO StockOrderLine VALUES ( 510003, 4, 'stocked', 500001, 4 ) ;
+																		 ({plineID, plineProductQuantity, plineStatus, plinePurchaseOrderID, plineProductID)
+
+$$$ Supplier
+
+INSERT INTO Supplier VALUES ( 400001, 'GnomeScope', 12345678, 123456, 01524867456, 'gnome@scope.com' ) ;
+							( supplierID, supplierName, supplierAccountNumber, supplierSortCode, supplierPhone, supplierEmail )
+
+$$$ Supplier Info
+
+INSERT INTO SupplierInfo VALUES ( 5.00, 400001, 600001 ) ;
+								( supplierProductPrice, supplierSupplierID, supplierProductID ) ;
+
+
+
+
+
+
+
+
+
+
+
+$$$ Customer Return
+
+INSERT INTO CustomerReturn VALUES ( 111001, to_date ('11:05:00 AM 02/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 100001 ) ;
+
+
+$$$ CallCentreEmployee
+
+INSERT INTO CALLCENTREEMPLOYEE ( 201, 'Ray Smithy' ) ;
+																
+$$$ Customer Order
+
+INSERT INTO CUSTOMERORDER VALUES ( 100001, to_date ('9:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1, 201 ) ;
+INSERT INTO CUSTOMERORDER VALUES ( 100002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1, 201 ) ;
+																  ( orderID, orderTimePlaced, customerID, callCentreID)
+
+$$$ Warehouse Employee
+
+INSERT INTO WAREHOUSEEMPLOYEE ( 301, 'Ben Back', 'Stocker', 0 ) ;
+INSERT INTO WAREHOUSEEMPLOYEE ( 302, 'Petunia Snuggles', 'Stocker', 1 ) ;
+INSERT INTO WAREHOUSEEMPLOYEE ( 303, 'Daisy Petal', 'Painter', 0 ) ;
+															  ( warehouseID, warehouseName, warehouseRole, warehouseForklift )
+																  
+
+													
+Open SQL  something like oraclexe >> sqlplus
+>> SYSTEM
+>>  password
+
+then open something else
+
+
+
+
+
+
+
+
+
+
+
+

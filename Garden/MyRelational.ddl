@@ -144,8 +144,9 @@ CREATE TABLE PurchaseOrder
   (
     purchaseID         INTEGER NOT NULL ,
     purchaseTimePlaced DATE ,
-    purchaseStatus     VARCHAR2 (45) ,
-    Supplier_supplierID INTEGER NOT NULL
+    purchaseTimeReceived  DATE ,
+    purchaseStatus        VARCHAR2 (45) ,
+    Supplier_supplierID   INTEGER NOT NULL
   ) ;
 ALTER TABLE PurchaseOrder ADD CONSTRAINT PurchaseID_PK PRIMARY KEY ( purchaseID ) ;
 
@@ -156,9 +157,10 @@ CREATE TABLE PurchaseOrderLine
     plineProductQuantity     INTEGER ,
     plineStatus              VARCHAR2 (20) ,
     PurchaseOrder_purchaseID INTEGER NOT NULL ,
-    Product_productID        INTEGER NOT NULL
+    Product_productID        INTEGER NOT NULL ,
+    WarehouseEmployee_warehouseID INTEGER NOT NULL
   ) ;
-ALTER TABLE PurchaseOrderLine ADD CONSTRAINT PurchaseOrderLine_PK PRIMARY KEY ( plineID ) ;
+ALTER TABLE PurchaseOrderLine ADD CONSTRAINT PlineID_PK PRIMARY KEY ( plineID ) ;
 
 
 CREATE TABLE Supplier

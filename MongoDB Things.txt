@@ -17,6 +17,8 @@ db.CustomerOrder.find({products:{productID:600001}}).pretty()
 db.CustomerOrder.find({ products : {$all : [
 	{ $elemMatch : {productQuantity:1}},
 	{ $elemMatch : {productQuantity:1}}]}}, {"products.productID.$":1, _id:0}).pretty()
+db.CustomerOrder.find ( { products : { $elemMatch : 
+	{ productQuantity : 1 } } } , { "products.productID.$" : 1 , _id : 0 } ).pretty ()
 db.CustomerOrder.find({"products.custom" : /.*["sparkles"]/},{"products.productID":1, _id:0}).pretty()
 
 db.CustomerOrder.find({
@@ -99,20 +101,13 @@ db.CustomerOrder.insert ( {
 db.CustomerOrder.insert ( { orderID : 100002, orderCustomerID : 800002 , orderAddressID : 800003 , orderEmployee : 301 , orderTimePlaced :  , orderTimeDispatched :  ,
                             products : { { productID : 600007 , productQuantity : 1 , custom : "Paint everything black" } } } )
 
-$$$$$$$$$$ CustomerOrderLine
-
-db.CustomerOrder.ensureIndex ( { orderID : 1 } , { unique : 1 } )
-dbCustomerOrderLine.insert ( 
-	{ customerOrderID : 100001 ,
-	  productID : 600001 }
-)
-
 $$$$$$$$$$ Customer Return
 
 db.CustomerReturn.ensureIndex ( { returnID : 1 } , { unique : 1 } )
-db.CustomerReturn.insert ( { returnID : 111001 , returnOrderID : 100001 , returnTimeReceived :  , returnStatus : "complete" ,
-                             products [ { productID : 600001 , productCondition : "good" }
-                                          productID : 600003 , productCondition : "damaged" ] } )
+db.CustomerReturn.insert ( { returnID : 111001 , returnOrderID : 100001 , returnTimeReceived : new Date (2016, 12, 02, 15, 40, 05)  , returnStatus : "complete" ,
+                             products : [
+                                 { productID : 600001 , productCondition : "good" } ,
+                                 { productID : 600003 , productCondition : "damaged" } ] } )
 
 $$$$$$$$$$ Purchase Order
 
@@ -147,3 +142,11 @@ db..ensureIndex ( { ID : 1 } , { unique : 1 } )
 
 
 
+ORACLE
+
+Product
+
+MONGO
+
+Catalog
+Pictures

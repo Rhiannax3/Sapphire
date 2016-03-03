@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"Garden.Employee"},{"v":1,"unique":true,"key":{"employeeID":1.0},"name":"employeeID_1","ns":"Garden.Employee"}]}
