@@ -1,0 +1,234 @@
+INSERT INTO CUSTOMER VALUES(1,"Dave Daveson",15646456,19750511,0,"74 Melon way, Cabbagetown, CB3 CGT",123548965421)
+INSERT INTO CUSTOMER VALUES(2,"Coline Banana",22546514,19430909,0,"75 Melon way, Cabbagetown, CB3 CGT",1235654878996)
+INSERT INTO CUSTOMER VALUES(3,"Barnaby Cheese",21345354,15091207,1,"99 Banana avenue, Cabbagetown, CB1 HJU",1235456874562)
+INSERT INTO CUSTOMER VALUES(4,"Deborah Juniper",242545,19560422,0,"2 Potato Road, Beetrootville, BV09 T50",2873745273737)
+INSERT INTO CUSTOMER VALUES(5,"David Dickenson",2164684764,1967022,0,"17 Potato Road, Beetrootville, BV09 T50",47254275378367)
+
+
+INSERT INTO "CUSTOMERORDER" VALUES('Complete', 1, 20160118,1,1);
+INSERT INTO "CUSTOMERORDER" VALUES('Pending',2,20160218,3,1);
+INSERT INTO "CUSTOMERORDER" VALUES('Dispatched', 3, 20160217,5,2);
+INSERT INTO "CUSTOMERORDER" VALUES('Complete', 4, 20160117,5,2);
+INSERT INTO "CUSTOMERORDER" VALUES('Pending', 5, 20160219, 1,2);
+
+INSERT INTO "PRODUCT" VALUES(1,'Green Gnome', 100, 0,5,2,'A7');
+INSERT INTO "PRODUCT" VALUES(2, 'Blue Gnome', 100, 0,8,3,'A8');
+INSERT INTO "PRODUCT" VALUES(3,'Jacuzzi', 3000,1,3,1,'F12');
+INSERT INTO "PRODUCT" VALUES(4,'Birdhouse', 1000,0,20,8,'C2');
+INSERT INTO "PRODUCT" VALUES(5,'Brown Bench',300,1,7,4,'E9');
+
+INSERT INTO "PRODUCTLOCATION" VALUES('A7',1);
+INSERT INTO "PRODUCTLOCATION" VALUES('A8',2);
+INSERT INTO "PRODUCTLOCATION" VALUES('F12',3);
+INSERT INTO "PRODUCTLOCATION" VALUES('C2',4);
+INSERT INTO "PRODUCTLOCATION" VALUES('E9',5);
+
+
+INSERT INTO "ORDERLINE" VALUES(1,1,2);
+INSERT INTO "ORDERLINE" VALUES(1,1,4);
+INSERT INTO "ORDERLINE" VALUES(3,3,1);
+INSERT INTO "ORDERLINE" VALUES(4,4,1);
+INSERT INTO "ORDERLINE" VALUES(4,5,1);
+
+INSERT INTO "SUPPLIER" VALUES(1,'Garden Stuff,23548956312);
+INSERT INTO "SUPPLIER" VALUES(2,'Garden Things',14563158796);
+INSERT INTO "SUPPLIER" VALUES(3,'Stuff For Your Garden',45687923154);
+INSERT INTO "SUPPLIER" VALUES(4,'Gnomes R Us',45789654231);
+INSERT INTO "SUPPLIER" VALUES(5,'The Shop For Shops',45789321568);
+
+
+INSERT INTO "RESUPPLYORDER" VALUES(1,1,'Complete', 20150511);
+INSERT INTO "RESUPPLYORDER" VALUES(2,4,'Order Sent', 20160220);
+INSERT INTO "RESUPPLYORDER" VALUES(3,5,'Order Recieved', 20160218);
+INSERT INTO "RESUPPLYORDER" VALUES(4,1,'Order Sent', 20160219);
+INSERT INTO "RESUPPLYORDER" VALUES(5,3,'Complete', 20151211);
+
+INSERT INTO "RESUPPLYORDERLINE" VALUES(1,2,10);
+INSERT INTO "RESUPPLYORDERLINE" VALUES(2,2,15);
+INSERT INTO "RESUPPLYORDERLINE" VALUES(3,1,5);
+INSERT INTO "RESUPPLYORDERLINE" VALUES(5,1,8);
+INSERT INTO "RESUPPLYORDERLINE" VALUES(4,5,10);
+
+
+INSERT INTO 'COURIER' VALUES(1, 'Speedy courier', 45879653215);
+
+
+--set serveroutput on
+declare customer_name varchar2(100); order_id int;
+
+BEGIN
+SELECT orderstatus, orderid INTO customer_name, order_id FROM CUSTOMERORDER WHERE customerid = 3;
+dbms_output.put_line('Order Status: ' || customer_name || '    ' || 'Order ID: '||order_id);
+
+END;
+/
+
+
+
+--set serveroutput on
+declare 
+cursor c1 is select customerorder.orderid, customerorder.customerid, customerorder.orderdate from customerorder where customerorder.orderstatus = 'Pending';
+order_id customerorder.orderid%type;
+customer_id customerorder.customerid%type;
+order_date customerorder.orderdate%type;
+
+
+BEGIN
+open c1;
+
+loop
+  fetch c1 into order_id, customer_id, order_date;
+  if c1%found then
+    dbms_output.put_line('Order ID: '||order_id || '   Customer ID: ' || customer_id || '   Order Date: ' || order_date );
+  else 
+    exit;
+  END if;
+end loop;
+end;
+/
+
+
+
+--set serveroutput on
+DECLARE 
+CURSOR c1 IS SELECT
+    customerorder.customerOrderid,
+    customerOrderline.productid,
+    customerorderline.clinequantity,
+    product.productprice from customer 
+JOIN customerorder     ON customerorder.customerid = customer.customerid
+JOIN customerorderline ON customerorderline.clineorderid = customerorder.orderid
+JOIN product           ON product.productid = customerorderline.productid 
+WHERE
+    customer.customerid = 5;
+    order_id customerorder.orderid%type;
+    product_id customerorderline.productid%type;
+    quantity customerorderline.clinequantity%type;
+    product_price product.productprice%type;
+
+BEGIN
+OPEN c1;
+
+loop
+  fetch c1 into order_id, product_id, quantity, product_price;
+  if c1%found then
+    dbms_output.put_line('Order ID: '||order_id || '  Product ID: ' || product_id || ' Quantity: '|| quantity ||'  Product Price: '|| product_price|| ' Total: ' || quantity * product_price);
+  else 
+    exit;
+  END if;
+end loop;
+end;
+/
+
+
+
+
+declare 
+cursor c1 is select customerorder.orderid, orderline.productid, orderline.orderlinequantity, product.productprice from customer 
+join customerorder on customerorder.customerid = customer.customerid
+join orderline on orderline.customerorderid = customerorder.orderid
+join product on product.productid = orderline.productid 
+where customer.customerid = 1;
+order_id customerorder.orderid%type;
+product_id orderline.productid%type;
+quantity orderline.orderlinequantity%type;
+product_price product.productprice%type;
+total int := 0;
+
+BEGIN
+open c1;
+
+loop
+  fetch c1 into order_id, product_id, quantity, product_price;
+  if c1%found then
+    dbms_output.put_line('Order ID: '||order_id || '  Product ID: ' || product_id || ' Quantity: '|| quantity ||'  Product Price: '|| product_price|| ' Total: ' || quantity * product_price);
+    total := total + (quantity*product_price);
+  else 
+    exit;
+  END if;
+   
+end loop;
+dbms_output.put_line('Total Customer Payments: ' || total);
+end;
+/
+
+declare
+cursor c1 is select supplier.suppliername, resupplyorderline.productid, resupplyorderline.resupplyquantity, product.productprice from resupplyorder 
+join supplier on supplier.supplierid = resupplyorder.supplierid
+join resupplyorderline on resupplyorderline.resupplyid = resupplyorder.resupplyid
+join product on product.productid = resupplyorderline.productid 
+where resupplyorder.resupplystatus = 'Order Sent';
+supplier_name supplier.suppliername%type;
+product_id resupplyorderline.productid%type;
+quantity resupplyorderline.resupplyquantity%type;
+product_price product.productprice%type;
+
+
+BEGIN
+open c1;
+
+loop
+  fetch c1 into supplier_name, product_id, quantity, product_price;
+  if c1%found then
+    dbms_output.put_line('Supplier Name: '||supplier_name||',  Product ID: '||product_id|| ', Quantity: '|| quantity || ', Order Cost: '|| product_price * quantity);
+  else 
+    exit;
+  END if;   
+end loop;
+end;
+/
+
+db.Employees.insert({
+	employeeID: 10,
+	employeeName: "Walder Watermelon",
+	employeeAddress: "13 Potato Lane, Soil City, SC81 TYI",
+	employeePhone: 02145023651,
+	employeeDOB: 19800712,
+	employeeRole: "Warehouse",
+	employeePaint: 1,
+	employeeUsername: "Wa.Watermelon",
+	employeePasword: "Wa.Watermelon"
+	})
+
+
+db.Customer.insert({
+	customerID: 3,
+	customerName: "Barnaby Cheese",
+	customerAddress: { HouseStreet: "99 Banana avenue", Town: "Cabbagetown", Postcode: "CB1 HJU"},
+	customerBlacklisted: 1,
+	customerDOB: 15091207,
+	
+	})
+
+db.Customer.insert({
+	customerID: 6,
+	customerName: "David Dickenson",
+	customerAddress: [{ HouseStreet: "17 Potato Road"}, {Town: "Beetrootville"}, {Postcode: "BV09 T50"}],
+	customerPhone: 2164684764,
+	customerDOB: 19670220,
+	customerEmail: "DDickenson@email.com",
+	customerPaymentDetails: {
+	cardNumber: 1478963201205684,
+	expiryDate: "01/20",
+	securityNo: 698}
+	})
+
+db.CustomerFeedback.insert({
+	customerID: 4,
+	orderID: 7,
+	salesmanRating: 10,
+	speedRating: 7,
+	productRating: 8,
+	comments: "Excellent service. I will certainly be recommending you to everyone I meet."
+	})
+
+
+
+	CREATE TABLE product (
+		productID 	INTEGER 	NOT NULL
+		productName		VARCHAR(20) 	NOT NULL
+		price	INTEGER 	NOT NULL
+		size 	VARCHAR(20) 	NULL
+
+		PRIMARY KEY(productID)
+	)
