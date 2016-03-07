@@ -41,8 +41,8 @@ INSERT INTO Address VALUES ( '11', 'Street', 'Letchworth Garden City', 'Hertford
 INSERT INTO PaymentDetails VALUES ( 1234567890123456, 1216, 123 ) ;
 INSERT INTO PaymentDetails VALUES ( 2345678901234567, 1217, 234 ) ;
 
-INSERT INTO Customer VALUES ( 1, 'Cat Smith',    to_date('1992-10-03', 'yyyy-mm-dd'), 'active', 'cat@kittens.com',  4476654987740, 2345678901234567, 234 );
-INSERT INTO Customer VALUES ( 2, 'Oliver Heald', to_date('1968-12-23', 'yyyy-mm-dd'), 'active', 'tory@kittens.com', 4476765377407, 1234567890123456, 123 );
+INSERT INTO Customer VALUES ( 700001, 'Cat Smith',    to_date('1992-10-03', 'yyyy-mm-dd'), 'active', 'cat@kittens.com',  4476654987740, 2345678901234567, 234 );
+INSERT INTO Customer VALUES ( 700002, 'Oliver Heald', to_date('1968-12-23', 'yyyy-mm-dd'), 'active', 'tory@kittens.com', 4476765377407, 1234567890123456, 123 );
 
 ALTER TABLE PaymentDetails
   Add Address_addressHouse    VARCHAR2 (45) NOT NULL
@@ -51,13 +51,22 @@ ALTER TABLE
   
     Address_addressPostcode VARCHAR2 (8) NOT NULL
 
-INSERT INTO CustomerOrder VALUES ( 100001, to_date ('9:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1, 201 ) ;
-INSERT INTO CustomerOrder VALUES ( 100002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 1, 201 ) ;
+INSERT INTO CustomerOrder VALUES ( 100001, to_date ('09:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('10:10:10 AM 25/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 201, 700001, '1',  'K1TTS0',  'EAST001' ) ;
+INSERT INTO CustomerOrder VALUES ( 100002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('11:30:05 AM 06/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 201, 700002, '11', 'SG6 OH1', 'WALES001' ) ;
 
-INSERT INTO CustomerOrderLine VALUES ( 110001, 10, 0, 0, 'dispatched', 100001, 301, 1 ) ;
-INSERT INTO CustomerOrderLine VALUES ( 110002, 1, 0, 0, 'dispatched', 100001, 301, 3 ) ;
-INSERT INTO CustomerOrderLine VALUES ( 110003, 1, 1, 1, 'dispatched', 100001, 301, 4 ) ;
-INSERT INTO CustomerOrderLine VALUES ( 110004, 1, 1, 1, 'dispatched', 100001, 302, 7 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 10, 'dispatched', 301, 100001, 600001 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 10, 'dispatched', 301, 100001, 600001 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 1,  'dispatched', 301, 100001, 600003 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 1,  'dispatched', 301, 100001, 600004 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 1,  'dispatched', 302, 100001, 600007 ) ;
+
+INSERT INTO CustomerBoxLine VALUES ( 2, 100001, 111001 ) ;
+INSERT INTO CustomerBoxLine VALUES ( 1, 100001, 111002 ) ;
+INSERT INTO CustomerBoxLine VALUES ( 1, 100002, 111003 ) ;
+
+INSERT INTO Box VALUES ( 111001, 'Standard' ) ;
+INSERT INTO Box VALUES ( 111002, 'Quite Large' ) ;
+INSERT INTO Box VALUES ( 111003, 'Very Large' ) ;
 
 INSERT INTO WarehouseEmployee VALUES ( 301, 'Stocker', 0, 'Ben Back' ) ;
 INSERT INTO WarehouseEmployee VALUES ( 302, 'Stocker', 1, 'Petunia Snuggles' ) ;
@@ -67,13 +76,23 @@ INSERT INTO CustomerReturn VALUES ( 111001, to_date ('11:05:00 AM 02/04/2015', '
 
 INSERT INTO ReturnOrderLine VALUES ( 111101, 1, 'complete', 111001, 301, 110001 ) ;
 
-INSERT INTO Supplier VALUES ( 400001, 'GnomeScope', 12345678, 123456, 01524867456, 'gnome@scope.com' ) ;
+INSERT INTO Supplier VALUES ( 400001, 'GnomeScope', 12345678, 123456, '01524867456', 'gnome@scope.com' ) ;
+INSERT INTO Supplier VALUES ( 400002, 'Gnometastic', 23456789, 234567, '01524867467', 'gnometastic@gnomes.com' ) ;
 
-INSERT INTO SupplierInfo VALUES ( 410001, 5.00, 48, 400001, 1 ) ;
+INSERT INTO SupplierInfo VALUES ( 250,    400001, 600001 ) ;
+INSERT INTO SupplierInfo VALUES ( 500,    400002, 600001 ) ;
+INSERT INTO SupplierInfo VALUES ( 1000,   400002, 600002 ) ;
+INSERT INTO SupplierInfo VALUES ( 750,    400002, 600003 ) ;
+INSERT INTO SupplierInfo VALUES ( 1000,   400002, 600004 ) ;
+INSERT INTO SupplierInfo VALUES ( 2500,   400002, 600005 ) ;
+INSERT INTO SupplierInfo VALUES ( 12000,  400002, 600006 ) ;
+INSERT INTO SupplierInfo VALUES ( 50000,  400002, 600007 ) ;
+INSERT INTO SupplierInfo VALUES ( 25000,  400002, 600008 ) ;
+INSERT INTO SupplierInfo VALUES ( 200000, 400002, 600009 ) ;
 
-INSERT INTO PurchaseOrder VALUES ( 500001, to_date ('10:25:30 AM 20/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('09:15:30 AM 23/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 400001 ) ;
+INSERT INTO StockOrder VALUES ( 500001, to_date ('10:25:30 AM 20/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('09:15:30 AM 23/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 400001 ) ;
 
-INSERT INTO PurchaseOrderLine VALUES ( 510001, 1, 'stocked', 500001, 1, 301 ) ;
-INSERT INTO PurchaseOrderLine VALUES ( 510002, 12, 'stocked', 500001, 2, 302 ) ;
-INSERT INTO PurchaseOrderLine VALUES ( 510003, 4, 'stocked', 500001, 4, 301 ) ;
+INSERT INTO StockOrderLine VALUES ( 1,  'stocked', 301, 600001, 500001 ) ;
+INSERT INTO StockOrderLine VALUES ( 12, 'stocked', 302, 600002, 500001 ) ;
+INSERT INTO StockOrderLine VALUES ( 4,  'pending', 303, 600004, 500001 ) ;
 

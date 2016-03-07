@@ -63,13 +63,14 @@ ALTER TABLE CustomerOrder ADD CONSTRAINT CustomerOrder_PK PRIMARY KEY ( orderID 
 CREATE TABLE CustomerOrderLine
   (
     clineQuantity         INTEGER ,
+    clineStatus           VARCHAR2 (45),
     clineEmployeeID       INTEGER ,
     CustomerOrder_orderID INTEGER NOT NULL ,
     Product_productID     INTEGER NOT NULL
   ) ;
 
 
-CREATE TABLE CustomerReturnLine
+CREATE TABLE ReturnOrderLine
   (
     rlineQuantity         INTEGER ,
     rlineReason           VARCHAR2 (45) ,
@@ -94,6 +95,9 @@ CREATE TABLE PaymentDetails
     cardNumber   VARCHAR2 (16) NOT NULL ,
     cardExpiry   VARCHAR2 (4) ,
     cardSecurity VARCHAR2 (3) NOT NULL
+    Address_addressHouse    VARCHAR2 (45) NOT NULL ,
+    Address_addressPostcode VARCHAR2 (8) NOT NULL
+    
   ) ;
 ALTER TABLE PaymentDetails ADD CONSTRAINT PaymentDetails_PK PRIMARY KEY ( cardNumber, cardSecurity ) ;
 
@@ -126,7 +130,8 @@ ALTER TABLE StockOrder ADD CONSTRAINT StockOrder_PK PRIMARY KEY ( stockOrderID )
 CREATE TABLE StockOrderLine
   (
     slineQuantity           INTEGER ,
-    slineReceived           CHAR (1) ,
+    slineStatus             VARCHAR2 (15) ,
+    slineEmployeeID         INTEGER ,
     Product_productID       INTEGER NOT NULL ,
     StockOrder_stockOrderID INTEGER NOT NULL
   ) ;
@@ -160,7 +165,6 @@ CREATE TABLE WarehouseLocation
   ) ;
 ALTER TABLE WarehouseLocation ADD CONSTRAINT WarehouseLocation_PK PRIMARY KEY ( locationID ) ;
 
-
 ALTER TABLE CustomerBoxLine ADD CONSTRAINT CBL_Box_FK FOREIGN KEY ( Box_boxID ) REFERENCES Box ( boxID ) ;
 
 ALTER TABLE CustomerBoxLine ADD CONSTRAINT CBL_CustomerOrder_FK FOREIGN KEY ( CustomerOrder_orderID ) REFERENCES CustomerOrder ( orderID ) ;
@@ -175,11 +179,13 @@ ALTER TABLE CustomerOrder ADD CONSTRAINT CO_Customer_FK FOREIGN KEY ( Customer_c
 
 ALTER TABLE CustomerOrder ADD CONSTRAINT CO_GeoDistribution_FK FOREIGN KEY ( GeoDistribution_zoneID ) REFERENCES GeoDistribution ( zoneID ) ;
 
-ALTER TABLE CustomerReturnLine ADD CONSTRAINT CRL_CustomerOrder_FK FOREIGN KEY ( CustomerOrder_orderID ) REFERENCES CustomerOrder ( orderID ) ;
+ALTER TABLE ReturnOrderLine ADD CONSTRAINT CRL_CustomerOrder_FK FOREIGN KEY ( CustomerOrder_orderID ) REFERENCES CustomerOrder ( orderID ) ;
 
-ALTER TABLE CustomerReturnLine ADD CONSTRAINT CRL_Product_FK FOREIGN KEY ( Product_productID ) REFERENCES Product ( productID ) ;
+ALTER TABLE ReturnOrderLine ADD CONSTRAINT CRL_Product_FK FOREIGN KEY ( Product_productID ) REFERENCES Product ( productID ) ;
 
 ALTER TABLE Customer ADD CONSTRAINT C_PaymentDetails_FK FOREIGN KEY ( PaymentDetails_cardNumber, PaymentDetails_cardSecurity ) REFERENCES PaymentDetails ( cardNumber, cardSecurity ) ;
+
+ALTER TABLE PaymentDetails ADD CONSTRAINT PD_Address_FK FOREIGN KEY ( Address_addressHouse, Address_addressPostcode ) REFERENCES Address ( addressHouse, addressPostcode ) ;
 
 ALTER TABLE Product ADD CONSTRAINT P_WarehouseLocation_FK FOREIGN KEY ( WarehouseLocation_locationID ) REFERENCES WarehouseLocation ( locationID ) ;
 

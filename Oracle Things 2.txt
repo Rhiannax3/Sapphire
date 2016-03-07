@@ -6,8 +6,8 @@ INSERT INTO PaymentDetails VALUES ( 2345678901234567, 1217, 234, 2 ) ;
 
 $$$ Customer
 
-INSERT INTO Customer VALUES ( 1, 'Cat Smith', to_date('1992-10-03', 'yyyy-mm-dd'), 'active', 'cat@kittens.com', 4476654987740, '1', 'K1TTS0', 2345678901234567, 234 );
-INSERT INTO Customer VALUES ( 2, 'Oliver Heald', to_date('1968-12-23', 'yyyy-mm-dd'), 'active', 'tory@kittens.com', 447676537740, '11', 'SG6 OH1' 1234567890123456, 123 );
+INSERT INTO Customer VALUES ( 700001, 'Cat Smith', to_date('1992-10-03', 'yyyy-mm-dd'), 'active', 'cat@kittens.com', 4476654987740, '1', 'K1TTS0', 2345678901234567, 234 );
+INSERT INTO Customer VALUES ( 700002, 'Oliver Heald', to_date('1968-12-23', 'yyyy-mm-dd'), 'active', 'tory@kittens.com', 447676537740, '11', 'SG6 OH1' 1234567890123456, 123 );
 							({customerID, customerName, customerDateOfBirth, customerStatus, customerEmail, customerPhone, customerAddressHouse, customerAddressPostcode, customerPaymentNumber, customerPaymentSecurity })
 
 $$$ Product
@@ -57,25 +57,32 @@ INSERT INTO GeoDistribution VALUES ( 'SCOT001', 10, 0, 8 );
 
 $$$ Customer Order
 
-INSERT INTO CustomerOrder VALUES ( 100001, to_date ('09:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('10:10:10 AM 25/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 201 ) ;
-INSERT INTO CustomerOrder VALUES ( 100002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('11:30:05 AM 06/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 201 ) ;
+INSERT INTO CustomerOrder VALUES ( 100001, to_date ('09:05:10 AM 24/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('10:10:10 AM 25/03/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 201, 700001, '1',  'K1TTS0',      ) ;
+INSERT INTO CustomerOrder VALUES ( 100002, to_date ('01:30:00 PM 05/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), to_date ('11:30:05 AM 06/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 201, 700002, '11', 'SG6 OH1',     ) ;
 								 ( orderID, orderTimePlaced, orderTimeDispatched, orderStatus, orderEmployeeID, orderCustomerID, orderAddressHouse, orderAddressPostcode, orderZoneID )
 
 
 $$$ Customer Order Line
 
-INSERT INTO CustomerOrderLine VALUES ( 110001, 100001, 1, 10, 0, 0, 'dispatched', 1, 301 ) ;
-INSERT INTO CustomerOrderLine VALUES ( 110002, 100001, 3, 1, 0, 0, 'dispatched', 1, 301 ) ;
-INSERT INTO CustomerOrderLine VALUES ( 110003, 100001, 4, 1, 1, 1, 'dispatched', 1, 301 ) ;
-INSERT INTO CustomerOrderLine VALUES ( 110004, 100002, 7, 1, 1, 1, 'dispatched', 1, 302 ) ;
+INSERT INTO CustomerOrderLine VALUES ( 110001, 100001, 1, 10, 0, 0, 'dispatched', 1, 301,  ,  ) ;
+INSERT INTO CustomerOrderLine VALUES ( 110002, 100001, 3, 1, 0, 0,  'dispatched', 1, 301,  ,  ) ;
+INSERT INTO CustomerOrderLine VALUES ( 110003, 100001, 4, 1, 1, 1,  'dispatched', 1, 301,  ,  ) ;
+INSERT INTO CustomerOrderLine VALUES ( 110004, 100002, 7, 1, 1, 1,  'dispatched', 1, 302,  ,  ) ;
 									 ({clineID, clineOrderID: , clineProductQuantity: , clineProductCustom: , clinePoductPainted: , clineStatus: ""})
 
 																	( returnID, returnReceived, returnStatus, returnCustomerOrderID )
 
 $$$ Customer Box Line
 
-INSERT INTO CustomerBoxLine VALUES ( 110001, 100001, 1, 10, 0, 0, 'dispatched', 1, 301 ) ;
+INSERT INTO CustomerBoxLine VALUES ( 2, 100001, 111001 ) ;
+INSERT INTO CustomerBoxLine VALUES ( 1, 100001, 111002 ) ;
+INSERT INTO CustomerBoxLine VALUES ( 1, 100002, 111003 ) ;
 
+$$$ Box
+
+INSERT INTO Box VALUES ( 111001, "Standard" ) ;
+INSERT INTO Box VALUES ( 111001, "Quite Large" ) ;
+INSERT INTO Box VALUES ( 111001, "Very Large" ) ;
 
 $$$ Customer Return Line
 
@@ -96,16 +103,36 @@ INSERT INTO StockOrderLine VALUES ( 510003, 4, 'stocked', 500001, 4 ) ;
 
 $$$ Supplier
 
-INSERT INTO Supplier VALUES ( 400001, 'GnomeScope', 12345678, 123456, 01524867456, 'gnome@scope.com' ) ;
+INSERT INTO Supplier VALUES ( 400001, 'GnomeScope', 12345678, 123456, '01524867456', 'gnome@scope.com' ) ;
+INSERT INTO Supplier VALUES ( 400002, 'Gnometastic', 23456789, 234567, '01524867467', 'gnometastic@gnomes.com' ) ;
+
 							( supplierID, supplierName, supplierAccountNumber, supplierSortCode, supplierPhone, supplierEmail )
 
 $$$ Supplier Info
 
-INSERT INTO SupplierInfo VALUES ( 5.00, 400001, 600001 ) ;
+INSERT INTO SupplierInfo VALUES ( 250,    400001, 600001 ) ;
+INSERT INTO SupplierInfo VALUES ( 500,    400002, 600001 ) ;
+INSERT INTO SupplierInfo VALUES ( 1000,   400002, 600002 ) ;
+INSERT INTO SupplierInfo VALUES ( 750,    400002, 600003 ) ;
+INSERT INTO SupplierInfo VALUES ( 1000,   400002, 600004 ) ;
+INSERT INTO SupplierInfo VALUES ( 2500,   400002, 600005 ) ;
+INSERT INTO SupplierInfo VALUES ( 12000,  400002, 600006 ) ;
+INSERT INTO SupplierInfo VALUES ( 50000,  400002, 600007 ) ;
+INSERT INTO SupplierInfo VALUES ( 25000,  400002, 600008 ) ;
+INSERT INTO SupplierInfo VALUES ( 200000, 400002, 600009 ) ;
+
 								( supplierProductPrice, supplierSupplierID, supplierProductID ) ;
 
 
 
+
+
+
+
+
+$$$ Customer Box
+
+INSERT INTO CustomerReturn VALUES ( 111001, to_date ('11:05:00 AM 02/04/2015', 'HH:MI:SS AM DD/MM/YYYY'), 'complete', 100001 ) ;
 
 
 
